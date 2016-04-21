@@ -47,6 +47,8 @@ For the data obtained in the "shifted" condition, there are 4 columns
 
 ## Implementation of the model
 
+If you just want to have a quick look at an example output from running one of the notebooks, you have a look at [a rendered version in HTML](zamboni-et-al-model.html).
+
 To run the model and visualize the data:
 
 1. Install a version of Julia from http://julialang.org/downloads/
