@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Zamboni-2016 by schluppeck</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Zamboni-2016</h1>
+        <p>Data and analysis code for Zamboni et al (2016) manuscript. &quot;Do perceptual biases emerge early or late in visual processing?&quot;</p>
+
+        <p class="view"><a href="https://github.com/schluppeck/zamboni-2016">View the Project on GitHub <small>schluppeck/zamboni-2016</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/schluppeck/zamboni-2016/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/schluppeck/zamboni-2016/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/schluppeck/zamboni-2016">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="zamboni-2016" class="anchor" href="#zamboni-2016" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Zamboni-2016</h1>
+
+<h2>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h2>
+
+<p>Data and analysis code for Zamboni et al (2016) manuscript.</p>
+
+<blockquote>
+<p><em>Do perceptual biases emerge early or late in visual processing?</em></p>
+
+<p>Elisa Zamboni, Timothy Ledgeway, Paul V McGraw &amp; Denis Schluppeck</p>
+
+<p>School of Psychology, University of Nottingham
+University Park, Nottingham, NG7 2RD, UK</p>
+</blockquote>
+
+<h2>
+<a id="file-description" class="anchor" href="#file-description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>File description</h2>
+
+<p>Data files are provided as comma-separated files. The conventions for the data files included with this code are:</p>
+
+<h3>
+<a id="discrimination-data" class="anchor" href="#discrimination-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Discrimination data</h3>
+
+<pre><code>subject[ID]-discrimination.csv
+</code></pre>
+
+<p>Each row contains data obtained at particular stimulus direction (data were pooled across a 5º range of stimulus directions). There are 4 columns:</p>
+
+<ol>
+<li>Binned delta: stimulus direction</li>
+<li>Proportion CW: proportion of "clock-wise" responses</li>
+<li>SE: standard error of the "Proportion CW" data</li>
+<li>Coherence (one of 4 levels)</li>
+</ol>
+
+<h3>
+<a id="estimation-data" class="anchor" href="#estimation-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Estimation data</h3>
+
+<pre><code>subject[ID]-reference-[absent|present|shifted].csv
+subjectA-reference-absent.csv
+</code></pre>
+
+<p>Each row contains a trial. For present|absent data, there are 3 columns:</p>
+
+<ol>
+<li>(true) stimulus direction</li>
+<li>estimated direction</li>
+<li>coherence levels:</li>
+</ol>
+
+<p>For the data obtained in the "shifted" condition, there are 4 columns</p>
+
+<ol>
+<li>(true) stimulus direction</li>
+<li>estimated direction</li>
+<li>shift (-6º, 0º, +6º)</li>
+<li>coherence levels</li>
+</ol>
+
+<h2>
+<a id="implementation-of-the-model" class="anchor" href="#implementation-of-the-model" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Implementation of the model</h2>
+
+<p>If you just want to have a quick look at an example output from running one of the notebooks, you have a look at <a href="zamboni-et-al-model.ipynb">a rendered version in the github preview</a>.</p>
+
+<p>To run the model and visualize the data:</p>
+
+<ol>
+<li>Install a version of Julia from <a href="http://julialang.org/downloads/">http://julialang.org/downloads/</a>
+</li>
+<li>
+<strong>either</strong> clone the repository:
+<code>git clone https://github.com/schluppeck/zamboni-2016.git</code><br>
+</li>
+<li>
+<strong>or</strong> (if you want to avoid <code>git</code>), download a zip archive of the repository and unpack it. <a href="https://github.com/schluppeck/zamboni-2016/archive/master.zip">https://github.com/schluppeck/zamboni-2016/archive/master.zip</a>
+</li>
+<li>Under Mac OSX, there is a double-clickable application (<code>/Applications/Julia.app</code>). Alternatively, you could create an command line alias with <code>alias julia='/Applications/Julia-0.4.2.app/Contents/Resources/julia/bin/julia'</code>
+</li>
+</ol>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c1">cd</span> zamboni-2016
+julia <span class="pl-c"># to start julia</span></pre></div>
+
+<p>Then, from inside the Julia shell, launch the notebook server:</p>
+
+<div class="highlight highlight-source-julia"><pre><span class="pl-c"># install and update packages</span>
+Pkg<span class="pl-k">.</span><span class="pl-c1">add</span>(<span class="pl-s"><span class="pl-pds">"</span>IJulia<span class="pl-pds">"</span></span>)
+Pkg<span class="pl-k">.</span><span class="pl-c1">update</span>()
+<span class="pl-c"># start using them</span>
+<span class="pl-k">using</span> IJulia
+<span class="pl-c1">notebook</span>()
+<span class="pl-c"># this will launch the Jupyter notebook interface in   your web browser</span></pre></div>
+
+<p>Select the notebook in the browser window<br>
+<img src="jupyter.png" alt="Notebook selection"></p>
+
+<p>... and start stepping through the code by executing cells in turn (Shift-Return).</p>
+
+<p><img src="notebook.png" alt="Notebook selection"></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/schluppeck">schluppeck</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
